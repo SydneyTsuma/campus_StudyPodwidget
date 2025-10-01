@@ -1,144 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> USIU-Africa Library </title>
-    <style>
-        /* Green polish */
-        .root {
-            --white-bg: #f5f5f5;
-            --white-text: #333;
-            --white-border: #ddd;
-            --green-polish: #4CAF50; /* A vibrant green */
-            --green-polish-dark: #388E3C;
-            --undo-polish: #FF9800; /* Orange for Undo */
-            --undo-polish-dark: #F57C00;
-            --white-gray: #ccc;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> USIU-Africa Library </title>
+    <style>
+        /* Green polish */
+        :root {
+            --white-bg: #f5f5f5;
+            --white-text: #333;
+            --white-border: #ddd;
+            --green-polish: #4CAF50; /* A vibrant green */
+            --green-polish-dark: #388E3C;
+            --undo-polish: #FF9800; /* Orange for Undo */
+            --undo-polish-dark: #F57C00;
+            --white-gray: #ccc;
+            /* Added dark green variable to fix 'h1, h2' color */
+            --green-dark: var(--green-polish-dark);
+        }
 
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif; /* Clean, modern sans-serif */
-            background-color: var(-white-bg);
-            color: var(-white-text);
-            margin: 20px;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center the content horizontally */
-        }
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif; /* Clean, modern sans-serif */
+            /* FIX 1: Changed var(-white-bg) to var(--white-bg) */
+            background-color: var(--white-bg);
+            /* FIX 2: Changed var(-white-text) to var(--white-text) */
+            color: var(--white-text);
+            margin: 20px;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the content horizontally */
+        }
 
-        .container {
-            width: 90%;
-            max-width: 960px; 
-            background-color: #fff;
-            border: 1px solid var(-white-border);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
-            padding: 25px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-        }
+        .container {
+            width: 90%;
+            max-width: 960px;
+            background-color: #fff;
+            /* FIX 3: Changed var(-white-border) to var(--white-border) */
+            border: 1px solid var(--white-border);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
 
-        h1, h2 {
-            text-align: center;
-            color: var(--green-dark);
-            letter-spacing: 1px; 
-            text-transform: uppercase; 
-            font-weight: 700;
-        }
+        h1, h2 {
+            text-align: center;
+            color: var(--green-dark);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
 
-        form {
-            display: grid;
-            gap: 15px;
-            padding: 20px 0;
-            border-bottom: 1px dashed var(-white-border); 
-            margin-bottom: 20px;
-        }
+        form {
+            display: grid;
+            gap: 15px;
+            padding: 20px 0;
+            /* FIX 4: Changed var(-white-border) to var(--white-border) */
+            border-bottom: 1px dashed var(--white-border);
+            margin-bottom: 20px;
+        }
 
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            color: var(-white-text);
-        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            /* FIX 5: Changed var(-white-text) to var(--white-text) */
+            color: var(--white-text);
+        }
 
-        input[type="text"],
-        input[type="time"],
-        select {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid var(-white-border);
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 1rem;
-            background-color: #fcfcfc;
-        }
+        input[type="text"],
+        input[type="time"],
+        select {
+            width: 100%;
+            padding: 10px;
+            /* FIX 6: Changed var(-white-border) to var(--white-border) */
+            border: 1px solid var(--white-border);
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            background-color: #fcfcfc;
+        }
 
-        button {
-            background-color: var(-green-polish);
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
+        button {
+            /* FIX 7: Changed var(-green-polish) to var(--green-polish) */
+            background-color: var(--green-polish);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
 
-        button:hover {
-            background-color: var(--green-polish-dark);
-        }
+        button:hover {
+            background-color: var(--green-polish-dark);
+        }
 
-        #errors {
-            color: #D32F2F; /* Red for errors */
-            background-color: #FFEBEE; /* Light red background */
-            border: 1px solid #EF9A9A;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-            display: none; /* Hidden by default, shown on error */
-        }
+        #errors {
+            color: #D32F2F; /* Red for errors */
+            background-color: #FFEBEE; /* Light red background */
+            border: 1px solid #EF9A9A;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            display: none; /* Hidden by default, shown on error */
+        }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
 
-        th, td {
-            border: 1px solid var(-white-border);
-            padding: 10px;
-            text-align: left;
-        }
+        th, td {
+            /* FIX 8: Changed var(-white-border) to var(--white-border) */
+            border: 1px solid var(--white-border);
+            padding: 10px;
+            text-align: left;
+        }
 
-        th {
-            background-color: var(--green-polish);
-            color: white;
-            text-transform: uppercase;
-            font-size: 0.9em;
-            letter-spacing: 0.5px;
-        }
+        th {
+            background-color: var(--green-polish);
+            color: white;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
 
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
 
-        tr:hover {
-            background-color: #f0f0f0;
-        }
+        tr:hover {
+            background-color: #f0f0f0;
+        }
 
-        .remove-btn {
-            background-color: #F44336; /* Red for remove */
-            padding: 6px 12px;
-            font-size: 0.8em;
-            border-radius: 3px;
-        }
+        .remove-btn {
+            background-color: #F44336; /* Red for remove */
+            padding: 6px 12px;
+            font-size: 0.8em;
+            border-radius: 3px;
+        }
 
-        .remove-btn:hover {
-            background-color: #D32F2F;
-        }
+        .remove-btn:hover {
+            background-color: #D32F2F;
+        }
         
         .undo-btn {
             background-color: var(--undo-polish); /* Orange for Undo */
@@ -149,468 +159,489 @@
             background-color: var(--undo-polish-dark);
         }
 
-        .insights-panel {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #fefefe;
-            border: 1px solid var(-white-border);
-            border-radius: 8px;
-        }
+        .insights-panel {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #fefefe;
+            /* FIX 9: Changed var(-white-border) to var(--white-border) */
+            border: 1px solid var(--white-border);
+            border-radius: 8px;
+        }
 
-        .insights-panel h3 {
-            color: var(--green-polish);
-            margin-bottom: 15px;
-            border-bottom: 2px solid var(-white-gray);
-            padding-bottom: 5px;
-        }
+        .insights-panel h3 {
+            color: var(--green-polish);
+            margin-bottom: 15px;
+            /* FIX 10: Changed var(-white-gray) to var(--white-gray) */
+            border-bottom: 2px solid var(--white-gray);
+            padding-bottom: 5px;
+        }
 
-        .insights-panel p {
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-        }
+        .insights-panel p {
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
 
-        .insights-panel strong {
-            color: var(--green-polish-dark);
-        }
+        .insights-panel strong {
+            color: var(--green-polish-dark);
+        }
 
-        .insights-panel ul {
-            list-style: none;
-            padding: 0;
-            margin-top: 10px;
-        }
+        .insights-panel ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 10px;
+        }
 
-        .insights-panel ul li {
-            background-color: #f0f0f0;
-            margin-bottom: 5px;
-            padding: 8px 12px;
-            border-left: 5px solid var(--green-polish);
-            border-radius: 4px;
-        }
+        .insights-panel ul li {
+            background-color: #f0f0f0;
+            margin-bottom: 5px;
+            padding: 8px 12px;
+            border-left: 5px solid var(--green-polish);
+            border-radius: 4px;
+        }
 
-    </style>
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to USIU-Africa Library</h1>
+    <div class="container">
+        <h1>Welcome to USIU-Africa Library</h1>
 
-        <div id="errors" style="display: none;"></div>
+        <div id="errors" style="display: none;"></div>
 
-        <form id="bookingForm">
-            <h2>Book Your Study Pod</h2>
-            <div class="form-group">
-                <label for="podSelect">Pod ID:</label>
-                <select id="podSelect" required></select>
-            </div>
-            <div class="form-group">
-                <label for="timeInput">Booking Time (HH:00):</label>
-                <input type="time" id="timeInput" step="3600" min="08:00" max="19:00" required>
-            </div>
-            <div class="form-group">
-                <label for="studentsInput">Student IDs (comma-separated):</label>
-                <input type="text" id="studentsInput" placeholder="e.g., SST-101,SIT-045" required>
-            </div>
-            <button type="submit">Book Pod</button>
-        </form>
+        <form id="bookingForm">
+            <h2>Book Your Study Pod</h2>
+            <div class="form-group">
+                <label for="podSelect">Pod ID:</label>
+                <select id="podSelect" required></select>
+            </div>
+            <div class="form-group">
+                <label for="timeInput">Booking Time (HH:00):</label>
+                <input type="time" id="timeInput" step="3600" min="08:00" max="19:00" required>
+            </div>
+            <div class="form-group">
+                <label for="studentsInput">Student IDs (comma-separated):</label>
+                <input type="text" id="studentsInput" placeholder="e.g., SST-101,SIT-045" required>
+            </div>
+            <button type="submit">Book Pod</button>
+        </form>
         
         <div style="text-align: center; padding-top: 10px;">
             <button id="undoButton" class="undo-btn">Undo Last Booking</button>
         </div>
-            </div>
+            </div>
 
-    <div class="container">
-        <h2>Current Bookings </h2>
-        <table id="bookingsTable">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Pod</th>
-                    <th>Time</th>
-                    <th># Students</th>
-                    <th>Student IDs</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                </tbody>
-        </table>
-    </div>
+    <div class="container">
+        <h2>Current Bookings </h2>
+        <table id="bookingsTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Pod</th>
+                    <th>Time</th>
+                    <th># Students</th>
+                    <th>Student IDs</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </div>
 
-    <div class="container insights-panel">
-        <h2>Operational Insights</h2>
-        <p>Total bookings made today: <strong id="totalBookings"></strong></p>
-        <p>Total unique students served: <strong id="totalUniqueStudents"></strong></p>
-        <p>Busiest hour: <strong id="busiestHour"></strong></p>
-        <div>
-            <h3>Fill-rate per pod:</h3>
-            <ul id="fillRateList">
-                </ul>
-        </div>
-        <p>Flagged duplicate attempts (Rule 2/3): <strong id="flaggedDuplicates"></strong></p>
-    </div>
+    <div class="container insights-panel">
+        <h2>Operational Insights</h2>
+        <p>Total bookings made today: <strong id="totalBookings"></strong></p>
+        <p>Total unique students served: <strong id="totalUniqueStudents"></strong></p>
+        <p>Busiest hour: <strong id="busiestHour"></strong></p>
+        <div>
+            <h3>Fill-rate per pod:</h3>
+            <ul id="fillRateList">
+                </ul>
+        </div>
+        <p>Flagged duplicate attempts (Rule 2/3): <strong id="flaggedDuplicates"></strong></p>
+    </div>
 
-    <script>
-        // A short (max 120 words) comment block at the top of your JS explaining where you precisely used:
-        // Variables & data types: Used extensively for storing pods, bookings, form inputs (strings, arrays, objects, numbers, booleans) and insight counters.
-        // Control structures: 'if/else' for input validation, rule enforcement, and displaying errors. 'for' loops for iterating through arrays (pods, bookings, students).
-        // Loops: Employed 'for' loops for rendering table rows, processing student IDs, finding bookings, checking clashes, and calculating all insights (e.g., total students, busiest hour, fill rate).
-        // Functions: Encapsulated logic into small, single-responsibility functions (e.g., parseStudentIds, isWithinOperatingHours, recomputeInsights) for modularity and reusability.
-        // Events: Used 'DOMContentLoaded' to initialize the UI, 'submit' for form handling, and 'click' with event delegation for table row actions ('Remove' buttons).
-        // DOM manipulation: Used 'document.getElementById', 'document.createElement', 'appendChild', 'textContent', 'value', 'style.display', 'focus' to dynamically build forms, tables, and update insights.
+    <script>
+        // A short (max 120 words) comment block at the top of your JS explaining where you precisely used:
+        // Variables & data types: Used extensively for storing pods, bookings, form inputs (strings, arrays, objects, numbers, booleans) and insight counters.
+        // Control structures: 'if/else' for input validation, rule enforcement, and displaying errors. 'for' loops for iterating through arrays (pods, bookings, students).
+        // Loops: Employed 'for' loops for rendering table rows, processing student IDs, finding bookings, checking clashes, and calculating all insights (e.g., total students, busiest hour, fill rate).
+        // Functions: Encapsulated logic into small, single-responsibility functions (e.g., parseStudentIds, isWithinOperatingHours, recomputeInsights) for modularity and reusability.
+        // Events: Used 'DOMContentLoaded' to initialize the UI, 'submit' for form handling, and 'click' with event delegation for table row actions ('Remove' buttons).
+        // DOM manipulation: Used 'document.getElementById', 'document.createElement', 'appendChild', 'textContent', 'value', 'style.display', 'focus' to dynamically build forms, tables, and update insights.
 
-        document.addEventListener('DOMContentLoaded', () => {
-            // Global data, hard-coded as required
-            const pods = [
-                { id: "POD-A", capacity: 4 },
-                { id: "POD-B", capacity: 4 },
-                { id: "POD-C", capacity: 4 },
-            ];
-            let bookings = [ // Use `let` as bookings will be modified
-                { podId: "POD-A", time: "09:00", students: ["SIT-001", "SIT-045"] },
-                { podId: "POD-B", time: "10:00", students: ["SMC-210"] },
-            ];
+        document.addEventListener('DOMContentLoaded', () => {
+            // Global data, hard-coded as required
+            const pods = [
+                { id: "POD-A", capacity: 4 },
+                { id: "POD-B", capacity: 4 },
+                { id: "POD-C", capacity: 4 },
+            ];
+            let bookings = [ // Use `let` as bookings will be modified
+                { podId: "POD-A", time: "09:00", students: ["SIT-001", "SIT-045"] },
+                { podId: "POD-B", time: "10:00", students: ["SMC-210"] },
+            ];
 
-            let flaggedDuplicatesAttempted = 0; // Global counter for insights (C.5)
+            let flaggedDuplicatesAttempted = 0; // Global counter for insights (C.5)
             // Variable to track the last successfully added students for the undo functionality
             // Stores an object: { bookingIndex: number, students: string[] } or null
             let lastSuccessfulBooking = null; 
 
-            // DOM Elements
-            const podSelect = document.getElementById('podSelect');
-            const timeInput = document.getElementById('timeInput');
-            const studentsInput = document.getElementById('studentsInput');
-            const bookingForm = document.getElementById('bookingForm');
-            const errorsDiv = document.getElementById('errors');
-            const bookingsTableBody = document.querySelector('#bookingsTable tbody');
+            // DOM Elements
+            const podSelect = document.getElementById('podSelect');
+            const timeInput = document.getElementById('timeInput');
+            const studentsInput = document.getElementById('studentsInput');
+            const bookingForm = document.getElementById('bookingForm');
+            const errorsDiv = document.getElementById('errors');
+            const bookingsTableBody = document.querySelector('#bookingsTable tbody');
             const undoButton = document.getElementById('undoButton'); // Added DOM element
 
-            // Insight elements
-            const totalBookingsEl = document.getElementById('totalBookings');
-            const totalUniqueStudentsEl = document.getElementById('totalUniqueStudents');
-            const busiestHourEl = document.getElementById('busiestHour');
-            const fillRateListEl = document.getElementById('fillRateList');
-            const flaggedDuplicatesEl = document.getElementById('flaggedDuplicates');
+            // Insight elements
+            const totalBookingsEl = document.getElementById('totalBookings');
+            const totalUniqueStudentsEl = document.getElementById('totalUniqueStudents');
+            const busiestHourEl = document.getElementById('busiestHour');
+            const fillRateListEl = document.getElementById('fillRateList');
+            const flaggedDuplicatesEl = document.getElementById('flaggedDuplicates');
 
-            // D. Utility Functions
+            // D. Utility Functions
 
-            /**
-             * Parses a comma-separated string of student IDs into an array.
-             * Handles duplicate spaces, trims whitespace, and removes empty entries.
-             * Normalizes student IDs to uppercase for consistent comparison.
-             * @param {string} inputString - The raw string of student IDs (e.g., "SST-101,SIT-045 ,SST-901").
-             * @returns {string[]} An array of cleaned and normalized student IDs.
-             */
-            function parseStudentIds(inputString) {
-                if (!inputString) {
-                    return [];
-                }
-                // F. Edge-Case Handling: Duplicate spaces in the student ID list are handled by the regex /\s*,\s*/
-                // This splits by a comma, optionally preceded or followed by any whitespace.
-                const ids = inputString.split(/\s*,\s*/);
-                const cleanedIds = [];
-                for (let i = 0; i < ids.length; i++) {
-                    const trimmedId = ids[i].trim();
-                    if (trimmedId !== "") {
-                        // F. Edge-Case Handling: Students with lowercase vs uppercase input.
-                        // Justification: Normalize to uppercase. This simplifies comparisons by treating "sit-001" and "SIT-001" as the same student, preventing accidental duplicate bookings.
-                        cleanedIds.push(trimmedId.toUpperCase());
-                    }
-                }
-                return cleanedIds;
-            }
+            /**
+             * Parses a comma-separated string of student IDs into an array.
+             * Handles duplicate spaces, trims whitespace, and removes empty entries.
+             * Normalizes student IDs to uppercase for consistent comparison.
+             * @param {string} inputString - The raw string of student IDs (e.g., "SST-101,SIT-045 ,SST-901").
+             * @returns {string[]} An array of cleaned and normalized student IDs.
+             */
+            function parseStudentIds(inputString) {
+                if (!inputString) {
+                    return [];
+                }
+                // F. Edge-Case Handling: Duplicate spaces in the student ID list are handled by the regex /\s*,\s*/
+                // This splits by a comma, optionally preceded or followed by any whitespace.
+                const ids = inputString.split(/\s*,\s*/);
+                const cleanedIds = [];
+                for (let i = 0; i < ids.length; i++) {
+                    const trimmedId = ids[i].trim();
+                    if (trimmedId !== "") {
+                        // F. Edge-Case Handling: Students with lowercase vs uppercase input.
+                        // Justification: Normalize to uppercase. This simplifies comparisons by treating "sit-001" and "SIT-001" as the same student, preventing accidental duplicate bookings.
+                        cleanedIds.push(trimmedId.toUpperCase());
+                    }
+                }
+                return cleanedIds;
+            }
 
-            /**
-             * Checks if a given time string is within the operating hours (08:00 to 20:00).
-             * @param {string} timeString - The time string in "HH:MM" format.
-             * @returns {boolean} True if within operating hours, false otherwise.
-             */
-            function isWithinOperatingHours(timeString) {
-                // F. Edge-Case Handling: Invalid time strings (e.g., empty, "07:00", "20:00").
-                // "20:00" is exclusive end, so it's not valid. Empty or malformed strings are also invalid.
-                if (!timeString || timeString.length !== 5 || timeString[2] !== ':') {
-                    return false;
-                }
-                const [hoursStr, minutesStr] = timeString.split(':');
-                const hours = parseInt(hoursStr, 10);
-                const minutes = parseInt(minutesStr, 10);
+            /**
+             * Checks if a given time string is within the operating hours (08:00 to 20:00).
+             * @param {string} timeString - The time string in "HH:MM" format.
+             * @returns {boolean} True if within operating hours, false otherwise.
+             */
+            function isWithinOperatingHours(timeString) {
+                // F. Edge-Case Handling: Invalid time strings (e.g., empty, "07:00", "20:00").
+                // "20:00" is exclusive end, so it's not valid. Empty or malformed strings are also invalid.
+                if (!timeString || timeString.length !== 5 || timeString[2] !== ':') {
+                    return false;
+                }
+                const [hoursStr, minutesStr] = timeString.split(':');
+                const hours = parseInt(hoursStr, 10);
+                const minutes = parseInt(minutesStr, 10);
 
-                if (isNaN(hours) || isNaN(minutes)) {
-                    return false; // Malformed numbers
-                }
+                if (isNaN(hours) || isNaN(minutes)) {
+                    return false; // Malformed numbers
+                }
 
-                // Operating hours rule: 08:00 to 20:00 (inclusive start, exclusive end)
-                // Means 08:00, 09:00, ..., 19:00 are valid. 20:00 is not valid.
-                return hours >= 8 && hours < 20 && minutes === 0; // Ensure only on-the-hour bookings (step="3600" on input helps)
-            }
+                // Operating hours rule: 08:00 to 20:00 (inclusive start, exclusive end)
+                // Means 08:00, 09:00, ..., 19:00 are valid. 20:00 is not valid.
+                return hours >= 8 && hours < 20 && minutes === 0; // Ensure only on-the-hour bookings (step="3600" on input helps)
+            }
 
-            /**
-             * Finds a specific booking by podId and time.
-             * @param {string} podId - The ID of the pod.
-             * @param {string} timeString - The time of the booking in "HH:MM" format.
-             * @param {Array<Object>} bookingsArray - The array of current bookings.
-             * @returns {Object|null} The booking object if found, otherwise null.
-             */
-            function findBooking(podId, timeString, bookingsArray) {
-                for (let i = 0; i < bookingsArray.length; i++) {
-                    // Strict equality & truthiness rule: All comparisons for IDs and times must use ===.
-                    // Justification: Ensures type and value equality, preventing subtle bugs that can arise from type coercion (e.g., '10' == 10 is true, but '10' === 10 is false).
-                    if (bookingsArray[i].podId === podId && bookingsArray[i].time === timeString) {
-                        return bookingsArray[i];
-                    }
-                }
-                return null;
-            }
+            /**
+             * Finds a specific booking by podId and time.
+             * @param {string} podId - The ID of the pod.
+             * @param {string} timeString - The time of the booking in "HH:MM" format.
+             * @param {Array<Object>} bookingsArray - The array of current bookings.
+             * @returns {Object|null} The booking object if found, otherwise null.
+             */
+            function findBooking(podId, timeString, bookingsArray) {
+                for (let i = 0; i < bookingsArray.length; i++) {
+                    // Strict equality & truthiness rule: All comparisons for IDs and times must use ===.
+                    // Justification: Ensures type and value equality, preventing subtle bugs that can arise from type coercion (e.g., '10' == 10 is true, but '10' === 10 is false).
+                    if (bookingsArray[i].podId === podId && bookingsArray[i].time === timeString) {
+                        return bookingsArray[i];
+                    }
+                }
+                return null;
+            }
 
-            /**
-             * Checks if a student has a cross-pod clash at the given time.
-             * Rule: A student cannot be booked in two different pods at the same time.
-             * @param {string} studentId - The ID of the student.
-             * @param {string} timeString - The time of the potential booking.
-             * @param {string} newPodId - The pod ID for the current potential booking.
-             * @param {Array<Object>} bookingsArray - The array of current bookings.
-             * @returns {boolean} True if a clash exists, false otherwise.
-             */
-            function hasCrossPodClash(studentId, timeString, newPodId, bookingsArray) {
-                for (let i = 0; i < bookingsArray.length; i++) {
-                    const booking = bookingsArray[i];
-                    // Check if the current booking is at the same time AND in a different pod
-                    if (booking.time === timeString && booking.podId === newPodId) { // Check for same pod, means we check students within this pod specifically
-                        // Rule 2 check handled elsewhere
-                    } else if (booking.time === timeString && booking.podId !== newPodId) {
-                         // Rule 3: Cross-pod clash rule. Check if student is in this different pod at the same time.
-                        for (let j = 0; j < booking.students.length; j++) {
-                            if (booking.students[j] === studentId) {
-                                return true; // Student already booked in another pod at this time
-                            }
-                        }
-                    }
-                }
-                return false;
-            }
+            /**
+             * Checks if a student has a cross-pod clash at the given time.
+             * Rule: A student cannot be booked in two different pods at the same time.
+             * @param {string} studentId - The ID of the student.
+             * @param {string} timeString - The time of the potential booking.
+             * @param {string} newPodId - The pod ID for the current potential booking.
+             * @param {Array<Object>} bookingsArray - The array of current bookings.
+             * @returns {boolean} True if a clash exists, false otherwise.
+             */
+            function hasCrossPodClash(studentId, timeString, newPodId, bookingsArray) {
+                for (let i = 0; i < bookingsArray.length; i++) {
+                    const booking = bookingsArray[i];
+                    // Check if the current booking is at the same time AND in a different pod
+                    if (booking.time === timeString && booking.podId !== newPodId) {
+                            // Rule 3: Cross-pod clash rule. Check if student is in this different pod at the same time.
+                            for (let j = 0; j < booking.students.length; j++) {
+                                if (booking.students[j] === studentId) {
+                                    return true; // Student already booked in another pod at this time
+                                }
+                            }
+                    }
+                }
+                return false;
+            }
 
-            /**
-             * Helper function to round a number to one decimal place.
-             * @param {number} value - The number to round.
-             * @returns {number} The rounded number.
-             */
-            function roundToOneDecimal(value) {
-                return Math.round(value * 10) / 10;
-            }
+            /**
+             * Helper function to round a number to one decimal place.
+             * @param {number} value - The number to round.
+             * @returns {number} The rounded number.
+             */
+            function roundToOneDecimal(value) {
+                return Math.round(value * 10) / 10;
+            }
 
-            /**
-             * Recomputes all operational insights based on the current bookings.
-             * @param {Array<Object>} currentBookings - The array of current bookings.
-             * @param {Array<Object>} availablePods - The array of available pods.
-             * @returns {Object} An object containing all computed insights.
-             */
-            function recomputeInsights(currentBookings, availablePods) {
-                let totalBookingsMadeToday = 0;
-                const uniqueStudents = {}; // Using an object as a hash map to track unique students
-                const hourlyStudentCount = {}; // Tracks students per hour
-                const podBookedSeats = {}; // Tracks total seats booked per pod
-                const podSlotsUsed = {}; // Tracks unique 'podId-time' combinations to count used slots
+            /**
+             * Recomputes all operational insights based on the current bookings.
+             * @param {Array<Object>} currentBookings - The array of current bookings.
+             * @param {Array<Object>} availablePods - The array of available pods.
+             * @returns {Object} An object containing all computed insights.
+             */
+            function recomputeInsights(currentBookings, availablePods) {
+                let totalBookingsMadeToday = 0;
+                const uniqueStudents = {}; // Using an object as a hash map to track unique students
+                const hourlyStudentCount = {}; // Tracks students per hour
+                const podBookedSeats = {}; // Tracks total seats booked per pod
+                const podSlotsUsed = {}; // Tracks unique 'podId-time' combinations to count used slots
 
-                // Initialize pod tracking for fill rate
-                for (let i = 0; i < availablePods.length; i++) {
-                    podBookedSeats[availablePods[i].id] = 0;
-                }
+                // Initialize pod tracking for fill rate
+                for (let i = 0; i < availablePods.length; i++) {
+                    podBookedSeats[availablePods[i].id] = 0;
+                }
 
-                // Loop through all bookings to gather data for insights
-                for (let i = 0; i < currentBookings.length; i++) {
-                    const booking = currentBookings[i];
-                    totalBookingsMadeToday++;
+                // Loop through all bookings to gather data for insights
+                for (let i = 0; i < currentBookings.length; i++) {
+                    const booking = currentBookings[i];
+                    totalBookingsMadeToday++;
 
-                    // Track unique students
-                    for (let j = 0; j < booking.students.length; j++) {
-                        const studentId = booking.students[j];
-                        uniqueStudents[studentId] = true; // Mark student as seen
-                    }
+                    // Track unique students
+                    for (let j = 0; j < booking.students.length; j++) {
+                        const studentId = booking.students[j];
+                        uniqueStudents[studentId] = true; // Mark student as seen
+                    }
 
-                    // Track busiest hour
-                    const hour = booking.time.substring(0, 2); // Get "HH" part (e.g., "09")
-                    if (!hourlyStudentCount[hour]) {
-                        hourlyStudentCount[hour] = 0;
-                    }
-                    hourlyStudentCount[hour] += booking.students.length;
+                    // Track busiest hour
+                    const hour = booking.time.substring(0, 2); // Get "HH" part (e.g., "09")
+                    if (!hourlyStudentCount[hour]) {
+                        hourlyStudentCount[hour] = 0;
+                    }
+                    hourlyStudentCount[hour] += booking.students.length;
 
-                    // Track data for fill-rate per pod
-                    if (podBookedSeats[booking.podId] !== undefined) {
-                        podBookedSeats[booking.podId] += booking.students.length;
-                        // Count unique pod-time slots
-                        podSlotsUsed[`${booking.podId}-${booking.time}`] = true;
-                    }
-                }
+                    // Track data for fill-rate per pod
+                    if (podBookedSeats[booking.podId] !== undefined) {
+                        podBookedSeats[booking.podId] += booking.students.length;
+                        // Count unique pod-time slots
+                        podSlotsUsed[`${booking.podId}-${booking.time}`] = true;
+                    }
+                }
 
-                // Convert uniqueStudents object keys to count
-                let totalUniqueStudentsServed = 0;
-                for (const studentId in uniqueStudents) {
-                    if (Object.prototype.hasOwnProperty.call(uniqueStudents, studentId)) {
-                        totalUniqueStudentsServed++;
-                    }
-                }
+                // Convert uniqueStudents object keys to count
+                let totalUniqueStudentsServed = 0;
+                for (const studentId in uniqueStudents) {
+                    if (Object.prototype.hasOwnProperty.call(uniqueStudents, studentId)) {
+                        totalUniqueStudentsServed++;
+                    }
+                }
 
-                // Find busiest hour
-                let busiestHour = "N/A";
-                let maxStudentsInHour = -1; // Use -1 to handle case of no bookings
-                for (const hour in hourlyStudentCount) {
-                    if (Object.prototype.hasOwnProperty.call(hourlyStudentCount, hour)) {
-                        if (hourlyStudentCount[hour] > maxStudentsInHour) {
-                            maxStudentsInHour = hourlyStudentCount[hour];
-                            busiestHour = `${hour}:00`;
-                        }
-                    }
-                }
-                if (maxStudentsInHour === -1 && totalBookingsMadeToday > 0) { // If there are bookings but all hours have 0 students (e.g. empty bookings)
-                     busiestHour = "00:00"; // Or similar default, though "N/A" might be more accurate if no students ever
-                } else if (maxStudentsInHour === -1 && totalBookingsMadeToday === 0){ // No bookings at all
-                    busiestHour = "N/A";
-                }
+                // Find busiest hour
+                let busiestHour = "N/A";
+                let maxStudentsInHour = -1; // Use -1 to handle case of no bookings
+                for (const hour in hourlyStudentCount) {
+                    if (Object.prototype.hasOwnProperty.call(hourlyStudentCount, hour)) {
+                        if (hourlyStudentCount[hour] > maxStudentsInHour) {
+                            maxStudentsInHour = hourlyStudentCount[hour];
+                            busiestHour = `${hour}:00`;
+                        }
+                    }
+                }
+                if (maxStudentsInHour === -1 && totalBookingsMadeToday > 0) { // If there are bookings but all hours have 0 students (e.g. empty bookings)
+                    busiestHour = "00:00"; // Or similar default, though "N/A" might be more accurate if no students ever
+                } else if (maxStudentsInHour === -1 && totalBookingsMadeToday === 0){ // No bookings at all
+                    busiestHour = "N/A";
+                }
 
 
-                // Calculate fill-rate per pod
-                const fillRatePerPod = {};
-                for (let i = 0; i < availablePods.length; i++) {
-                    const pod = availablePods[i];
-                    const totalPossibleSeatsPerSlot = pod.capacity;
+                // Calculate fill-rate per pod
+                const fillRatePerPod = {};
+                for (let i = 0; i < availablePods.length; i++) {
+                    const pod = availablePods[i];
+                    const totalPossibleSeatsPerSlot = pod.capacity;
 
-                    let totalDistinctSlotsUsedByPod = 0;
-                    for (const key in podSlotsUsed) {
-                        if (Object.prototype.hasOwnProperty.call(podSlotsUsed, key) && key.startsWith(pod.id + '-')) {
-                            totalDistinctSlotsUsedByPod++;
-                        }
-                    }
+                    let totalDistinctSlotsUsedByPod = 0;
+                    for (const key in podSlotsUsed) {
+                        if (Object.prototype.hasOwnProperty.call(podSlotsUsed, key) && key.startsWith(pod.id + '-')) {
+                            totalDistinctSlotsUsedByPod++;
+                        }
+                    }
 
-                    if (totalDistinctSlotsUsedByPod > 0) {
-                        // Formula: (total booked seats / (total possible seats * number of slots used by that pod)) * 100
-                        const fillRate = (podBookedSeats[pod.id] / (totalPossibleSeatsPerSlot * totalDistinctSlotsUsedByPod)) * 100;
-                        fillRatePerPod[pod.id] = roundToOneDecimal(fillRate);
-                    } else {
-                        fillRatePerPod[pod.id] = 0.0; // No bookings for this pod
-                    }
-                }
+                    if (totalDistinctSlotsUsedByPod > 0) {
+                        // Formula: (total booked seats / (total possible seats * number of slots used by that pod)) * 100
+                        const fillRate = (podBookedSeats[pod.id] / (totalPossibleSeatsPerSlot * totalDistinctSlotsUsedByPod)) * 100;
+                        fillRatePerPod[pod.id] = roundToOneDecimal(fillRate);
+                    } else {
+                        fillRatePerPod[pod.id] = 0.0; // No bookings for this pod
+                    }
+                }
 
-                return {
-                    totalBookingsMadeToday: totalBookingsMadeToday,
-                    totalUniqueStudentsServed: totalUniqueStudentsServed,
-                    busiestHour: busiestHour,
-                    fillRatePerPod: fillRatePerPod,
-                    flaggedDuplicatesAttempted: flaggedDuplicatesAttempted
-                };
-            }
+                return {
+                    totalBookingsMadeToday: totalBookingsMadeToday,
+                    totalUniqueStudentsServed: totalUniqueStudentsServed,
+                    busiestHour: busiestHour,
+                    fillRatePerPod: fillRatePerPod,
+                    flaggedDuplicatesAttempted: flaggedDuplicatesAttempted
+                };
+            }
+
+            /**
+             * Renders the computed insights to the DOM.
+             */
+            function updateInsights() {
+                const insights = recomputeInsights(bookings, pods);
+
+                totalBookingsEl.textContent = insights.totalBookingsMadeToday;
+                totalUniqueStudentsEl.textContent = insights.totalUniqueStudentsServed;
+                busiestHourEl.textContent = insights.busiestHour;
+                flaggedDuplicatesEl.textContent = insights.flaggedDuplicatesAttempted;
+
+                fillRateListEl.innerHTML = '';
+                for (const podId in insights.fillRatePerPod) {
+                    if (Object.prototype.hasOwnProperty.call(insights.fillRatePerPod, podId)) {
+                        const li = document.createElement('li');
+                        li.textContent = `${podId}: ${insights.fillRatePerPod[podId]}%`;
+                        fillRateListEl.appendChild(li);
+                    }
+                }
+            }
 
 
-            // --- A. Booking Form (8 marks) ---
+            // --- A. Booking Form (8 marks) ---
 
-            // Populate Pod Select options
-            function populatePodSelect() {
-                // Clear existing options first
-                podSelect.innerHTML = '';
-                // Create a default "Select a pod" option
-                const defaultOption = document.createElement('option');
-                defaultOption.value = "";
-                defaultOption.textContent = "Select a Pod";
-                defaultOption.disabled = true;
-                defaultOption.selected = true;
-                podSelect.appendChild(defaultOption);
+            // Populate Pod Select options
+            function populatePodSelect() {
+                // Clear existing options first
+                podSelect.innerHTML = '';
+                // Create a default "Select a pod" option
+                const defaultOption = document.createElement('option');
+                defaultOption.value = "";
+                defaultOption.textContent = "Select a Pod";
+                defaultOption.disabled = true;
+                defaultOption.selected = true;
+                podSelect.appendChild(defaultOption);
 
-                for (let i = 0; i < pods.length; i++) {
-                    const pod = pods[i];
-                    const option = document.createElement('option');
-                    option.value = pod.id;
-                    option.textContent = pod.id;
-                    podSelect.appendChild(option);
-                }
-            }
+                for (let i = 0; i < pods.length; i++) {
+                    const pod = pods[i];
+                    const option = document.createElement('option');
+                    option.value = pod.id;
+                    option.textContent = pod.id;
+                    podSelect.appendChild(option);
+                }
+            }
 
-            // Display error messages (E. UX & Error Handling)
-            function displayError(message) {
-                errorsDiv.textContent = message;
-                errorsDiv.style.display = 'block';
-            }
+            // Display error messages (E. UX & Error Handling)
+            function displayError(message) {
+                errorsDiv.textContent = message;
+                errorsDiv.style.display = 'block';
+            }
 
-            // Clear error messages (E. UX & Error Handling)
-            function clearError() {
-                errorsDiv.textContent = '';
-                errorsDiv.style.display = 'none';
-            }
+            // Clear error messages (E. UX & Error Handling)
+            function clearError() {
+                errorsDiv.textContent = '';
+                errorsDiv.style.display = 'none';
+            }
 
-            // Form Submission Handler
-            bookingForm.addEventListener('submit', (event) => {
-                event.preventDefault(); // Prevent default form submission
+            // Form Submission Handler
+            bookingForm.addEventListener('submit', (event) => {
+                event.preventDefault(); // Prevent default form submission
 
-                clearError(); // Clear previous errors
+                clearError(); // Clear previous errors
 
-                const selectedPodId = podSelect.value;
-                const bookingTime = timeInput.value;
-                const rawStudentIds = studentsInput.value;
-                const newStudentIds = parseStudentIds(rawStudentIds);
+                const selectedPodId = podSelect.value;
+                const bookingTime = timeInput.value;
+                const rawStudentIds = studentsInput.value;
+                const newStudentIds = parseStudentIds(rawStudentIds);
 
-                // A. Validate inputs
-                if (!selectedPodId) {
-                    displayError('Please select a Pod ID.');
-                    return;
-                }
-                if (!bookingTime) {
-                    displayError('Please select a Booking Time.');
-                    return;
-                }
-                // F. Edge-Case Handling: Attempted bookings with an empty student list after parsing.
-                if (newStudentIds.length === 0) {
-                    displayError('Please enter at least one valid Student ID.');
-                    return;
-                }
-                if (!isWithinOperatingHours(bookingTime)) {
-                    displayError('Operating hours rule violated: Bookings are only allowed between 08:00 and 19:00 (on the hour).');
-                    return;
-                }
+                // A. Validate inputs
+                if (!selectedPodId) {
+                    displayError('Please select a Pod ID.');
+                    return;
+                }
+                if (!bookingTime) {
+                    displayError('Please select a Booking Time.');
+                    return;
+                }
+                // F. Edge-Case Handling: Attempted bookings with an empty student list after parsing.
+                if (newStudentIds.length === 0) {
+                    displayError('Please enter at least one valid Student ID.');
+                    return;
+                }
+                if (!isWithinOperatingHours(bookingTime)) {
+                    displayError('Operating hours rule violated: Bookings are only allowed between 08:00 and 19:00 (on the hour).');
+                    return;
+                }
 
-                // Get existing booking for the chosen pod and time, if any
-                let existingBooking = findBooking(selectedPodId, bookingTime, bookings);
+                // Get existing booking for the chosen pod and time, if any
+                let existingBooking = findBooking(selectedPodId, bookingTime, bookings);
 
-                const studentsToAttemptBooking = newStudentIds; // Students trying to book
-                const studentsActuallyBookedThisAttempt = []; // Students that pass all checks for this specific booking
+                const studentsToAttemptBooking = newStudentIds; // Students trying to book
+                const studentsActuallyBookedThisAttempt = []; // Students that pass all checks for this specific booking
 
-                // Individual student checks for duplicate and cross-pod clashes
-                for (let i = 0; i < studentsToAttemptBooking.length; i++) {
-                    const studentId = studentsToAttemptBooking[i];
+                // Individual student checks for duplicate and cross-pod clashes
+                for (let i = 0; i < studentsToAttemptBooking.length; i++) {
+                    const studentId = studentsToAttemptBooking[i];
 
-                    // Rule 3: Cross-pod clash rule
-                    if (hasCrossPodClash(studentId, bookingTime, selectedPodId, bookings)) {
-                        flaggedDuplicatesAttempted++; // Increment counter for Rule 3 violation
-                        displayError(`Cross-pod clash rule violated: Student ${studentId} is already booked in another pod at ${bookingTime}.`);
-                        return; // Stop and show error for this attempt
-                    }
+                    // Rule 3: Cross-pod clash rule
+                    if (hasCrossPodClash(studentId, bookingTime, selectedPodId, bookings)) {
+                        flaggedDuplicatesAttempted++; // Increment counter for Rule 3 violation
+                        displayError(`Cross-pod clash rule violated: Student ${studentId} is already booked in another pod at ${bookingTime}.`);
+                        return; // Stop and show error for this attempt
+                    }
 
-                    // Rule 2: Duplicate booking rule (same slot, same pod)
-                    if (existingBooking) {
-                        let isStudentAlreadyInPod = false;
-                        for (let j = 0; j < existingBooking.students.length; j++) {
-                            if (existingBooking.students[j] === studentId) {
-                                isStudentAlreadyInPod = true;
-                                break;
-                            }
-                        }
-                        if (isStudentAlreadyInPod) {
-                            flaggedDuplicatesAttempted++; // Increment counter for Rule 2 violation
-                            displayError(`Duplicate booking rule violated: Student ${studentId} is already booked in ${selectedPodId} at ${bookingTime}.`);
-                            return; // Stop and show error for this attempt
-                        }
-                    }
-                    // If passes both checks for this student, add to temp list for this booking
-                    studentsActuallyBookedThisAttempt.push(studentId);
-                }
+                    // Rule 2: Duplicate booking rule (same slot, same pod)
+                    if (existingBooking) {
+                        let isStudentAlreadyInPod = false;
+                        for (let j = 0; j < existingBooking.students.length; j++) {
+                            if (existingBooking.students[j] === studentId) {
+                                isStudentAlreadyInPod = true;
+                                break;
+                            }
+                        }
+                        if (isStudentAlreadyInPod) {
+                            flaggedDuplicatesAttempted++; // Increment counter for Rule 2 violation
+                            displayError(`Duplicate booking rule violated: Student ${studentId} is already booked in ${selectedPodId} at ${bookingTime}.`);
+                            return; // Stop and show error for this attempt
+                        }
+                    }
+                    // If passes both checks for this student, add to temp list for this booking
+                    studentsActuallyBookedThisAttempt.push(studentId);
+                }
 
-                // Rule 1: Capacity rule - check *after* all individual student validations pass
-                const currentStudentsInPod = existingBooking ? existingBooking.students.length : 0;
-                const newTotalStudents = currentStudentsInPod + studentsActuallyBookedThisAttempt.length;
-                const podCapacity = pods.find(p => p.id === selectedPodId).capacity; // Find capacity of selected pod
-                if (newTotalStudents > podCapacity) {
-                    displayError(`Capacity rule violated: Pod ${selectedPodId} has capacity for ${podCapacity} students, but this booking would make it ${newTotalStudents}.`);
-                    return;
-                }
+                // Rule 1: Capacity rule - check *after* all individual student validations pass
+                const currentStudentsInPod = existingBooking ? existingBooking.students.length : 0;
+                const newTotalStudents = currentStudentsInPod + studentsActuallyBookedThisAttempt.length;
+                const podCapacity = pods.find(p => p.id === selectedPodId).capacity; // Find capacity of selected pod
+                if (newTotalStudents > podCapacity) {
+                    displayError(`Capacity rule violated: Pod ${selectedPodId} has capacity for ${podCapacity} students, but this booking would make it ${newTotalStudents}.`);
+                    return;
+                }
 
-                // If all validations pass, proceed with booking
-                if (existingBooking) {
-                    // Store original state for undo
+                // If all validations pass, proceed with booking
+                if (existingBooking) {
+                    // Store original state for undo
                     lastSuccessfulBooking = {
                         action: 'append',
                         podId: existingBooking.podId,
@@ -619,18 +650,18 @@
                         initialStudentCount: existingBooking.students.length // Needed for re-consolidation logic if required, but mainly for clarity
                     };
                     
-                    // Add new students to existing booking
-                    for (let i = 0; i < studentsActuallyBookedThisAttempt.length; i++) {
-                        existingBooking.students.push(studentsActuallyBookedThisAttempt[i]);
-                    }
-                } else {
-                    // Create new booking
-                    const newBooking = {
-                        podId: selectedPodId,
-                        time: bookingTime,
-                        students: studentsActuallyBookedThisAttempt
-                    };
-                    bookings.push(newBooking);
+                    // Add new students to existing booking
+                    for (let i = 0; i < studentsActuallyBookedThisAttempt.length; i++) {
+                        existingBooking.students.push(studentsActuallyBookedThisAttempt[i]);
+                    }
+                } else {
+                    // Create new booking
+                    const newBooking = {
+                        podId: selectedPodId,
+                        time: bookingTime,
+                        students: studentsActuallyBookedThisAttempt
+                    };
+                    bookings.push(newBooking);
                     
                     // Store new booking data for undo
                     lastSuccessfulBooking = {
@@ -639,266 +670,233 @@
                         time: newBooking.time,
                         students: newBooking.students
                     };
-                }
+                }
 
-                renderBookingsTable(); // Re-render table with new booking
-                updateInsights(); // Update insights
-                clearForm(); // Clear form fields
-                studentsInput.focus(); // E. UX: Focus student IDs input for fast librarian entry
-            });
+                renderBookingsTable(); // Re-render table with new booking
+                updateInsights(); // Update insights
+                clearForm(); // Clear form fields
+                studentsInput.focus(); // E. UX: Focus student IDs input for fast librarian entry
+            });
 
-            function clearForm() {
-                podSelect.value = ""; // Reset to default "Select a Pod"
-                timeInput.value = '';
-                studentsInput.value = '';
-                clearError();
-            }
+            function clearForm() {
+                podSelect.value = ""; // Reset to default "Select a Pod"
+                timeInput.value = '';
+                studentsInput.value = '';
+                clearError();
+            }
 
+            // Event listener for Remove/Undo functionality (C. Undo and Remove)
+            bookingsTableBody.addEventListener('click', (event) => {
+                const target = event.target;
+                if (target.classList.contains('remove-btn')) {
+                    const index = parseInt(target.getAttribute('data-index'), 10);
+                    handleRemoveBooking(index);
+                }
+            });
 
-            // --- B. Bookings Table (8 marks) ---
+            undoButton.addEventListener('click', handleUndoLastBooking);
 
-            function renderBookingsTable() {
-                // Clear existing table rows
-                bookingsTableBody.innerHTML = '';
-
-                if (bookings.length === 0) {
-                    const noBookingsRow = document.createElement('tr');
-                    const cell = document.createElement('td');
-                    cell.setAttribute('colspan', '6'); // Span all columns
-                    cell.textContent = 'No bookings yet.';
-                    cell.style.textAlign = 'center';
-                    cell.style.fontStyle = 'italic';
-                    bookingsTableBody.appendChild(cell);
-                    return;
-                }
-
-                // Sort bookings for consistent display (optional but good UX: by time, then podId)
-                // We'll implement a simple bubble sort equivalent for array sorting without advanced methods
-                const sortedBookings = [];
-                for (let i = 0; i < bookings.length; i++) {
-                    sortedBookings.push(bookings[i]);
-                }
-
-                // Basic bubble sort for sorting by time then podId
-                for (let i = 0; i < sortedBookings.length - 1; i++) {
-                    for (let j = 0; j < sortedBookings.length - 1 - i; j++) {
-                        const bookingA = sortedBookings[j];
-                        const bookingB = sortedBookings[j + 1];
-
-                        // Compare by time first
-                        if (bookingA.time > bookingB.time) {
-                            // Swap
-                            const temp = sortedBookings[j];
-                            sortedBookings[j] = sortedBookings[j + 1];
-                            sortedBookings[j + 1] = temp;
-                        } else if (bookingA.time === bookingB.time) {
-                            // If times are equal, compare by podId
-                            if (bookingA.podId > bookingB.podId) {
-                                // Swap
-                                const temp = sortedBookings[j];
-                                sortedBookings[j] = sortedBookings[j + 1];
-                                sortedBookings[j + 1] = temp;
-                            }
-                        }
-                    }
-                }
-
-
-                for (let i = 0; i < sortedBookings.length; i++) {
-                    const booking = sortedBookings[i];
-                    const row = document.createElement('tr');
-
-                    // # (index)
-                    const indexCell = document.createElement('td');
-                    indexCell.textContent = i + 1; // 1-based index
-                    row.appendChild(indexCell);
-
-                    // Pod
-                    const podCell = document.createElement('td');
-                    podCell.textContent = booking.podId;
-                    row.appendChild(podCell);
-
-                    // Time
-                    const timeCell = document.createElement('td');
-                    timeCell.textContent = booking.time;
-                    row.appendChild(timeCell);
-
-                    // # Students
-                    const numStudentsCell = document.createElement('td');
-                    numStudentsCell.textContent = booking.students.length;
-                    row.appendChild(numStudentsCell);
-
-                    // Student IDs (comma-separated)
-                    const studentsCell = document.createElement('td');
-                    studentsCell.textContent = booking.students.join(', ');
-                    row.appendChild(studentsCell);
-
-                    // Actions (e.g., Remove)
-                    const actionsCell = document.createElement('td');
-                    const removeButton = document.createElement('button');
-                    removeButton.textContent = 'Remove';
-                    removeButton.classList.add('remove-btn');
-                    // Store podId and time for removal (more robust than index if array changes during event processing)
-                    removeButton.setAttribute('data-pod-id', booking.podId);
-                    removeButton.setAttribute('data-time', booking.time);
-                    actionsCell.appendChild(removeButton);
-                    row.appendChild(actionsCell);
-
-                    bookingsTableBody.appendChild(row);
-                }
-            }
-
-            // Event Delegation for Remove buttons
-            bookingsTableBody.addEventListener('click', (event) => {
-                if (event.target.classList.contains('remove-btn')) {
-                    const podIdToRemove = event.target.getAttribute('data-pod-id');
-                    const timeToRemove = event.target.getAttribute('data-time');
-                    
-                    // B. The requirement is to REMOVE the entire time slot.
-                    removeBooking(podIdToRemove, timeToRemove); 
-                }
-            });
-
-            /**
-             * Removes a booking from the global array based on podId and time.
-             * @param {string} podId - The pod ID of the booking to remove.
-             * @param {string} time - The time slot of the booking to remove.
-             */
-            function removeBooking(podId, time) {
-                let indexToRemove = -1;
-
-                for (let i = 0; i < bookings.length; i++) {
-                    // Find the index of the booking
-                    if (bookings[i].podId === podId && bookings[i].time === time) {
-                        indexToRemove = i;
-                        break;
-                    }
-                }
-
-                if (indexToRemove !== -1) {
-                    // Remove the booking object itself
-                    // This ensures that the entire time slot is freed, as per the usual interpretation of table 'Remove' buttons.
-                    bookings.splice(indexToRemove, 1);
-                    renderBookingsTable();
-                    updateInsights();
-                    clearError();
-                }
-            }
-
-            // --- F. Undo Last Booking Functionality ---
-            
             /**
-             * Undoes the last successful booking operation (new booking or student append).
-             * Resets the UI and the internal data model to the state before the last operation.
+             * Handles the removal of a specific booking using its index in the `bookings` array.
+             * @param {number} index - The index of the booking to remove.
              */
-            function undoLastBooking() {
+            function handleRemoveBooking(index) {
+                // F. Edge-Case Handling: Check if the index is valid
+                if (index >= 0 && index < bookings.length) {
+                    // Store the removed booking for potential undo, marking the action as 'remove'
+                    // This overwrites the lastSuccessfulBooking from the form, which is intended.
+                    lastSuccessfulBooking = {
+                        action: 'removed',
+                        ...bookings[index], // Use spread syntax to copy all booking properties
+                        originalIndex: index // Store the original index for re-insertion during undo
+                    };
+                    
+                    // B. Remove the booking using splice (Control Structure)
+                    bookings.splice(index, 1);
+
+                    renderBookingsTable();
+                    updateInsights();
+                }
+            }
+
+            /**
+             * Handles the undo operation based on the last successful action stored in `lastSuccessfulBooking`.
+             */
+            function handleUndoLastBooking() {
                 if (!lastSuccessfulBooking) {
-                    displayError(Please make a new booking first.');
+                    displayError('No recent successful booking or removal action to undo.');
+                    return;
+                }
+                
+                const lastAction = lastSuccessfulBooking.action;
+                const { podId, time, students } = lastSuccessfulBooking;
+                
+                // Find the index of the booking in the current array state (if it still exists)
+                let currentBookingIndex = -1;
+                for(let i = 0; i < bookings.length; i++) { // Loop (Control Structure)
+                    if (bookings[i].podId === podId && bookings[i].time === time) {
+                        currentBookingIndex = i;
+                        break;
+                    }
+                }
+                
+                if (lastAction === 'new' && currentBookingIndex !== -1) {
+                    // Undo 'new': Remove the whole booking object
+                    bookings.splice(currentBookingIndex, 1);
+                    displayError(`Undo successful: Removed new booking for ${podId} at ${time}.`);
+                } else if (lastAction === 'append' && currentBookingIndex !== -1) {
+                    // Undo 'append': Remove the students that were added during the append action
+                    const currentStudents = bookings[currentBookingIndex].students;
+                    // Remove the last 'students.length' IDs (which are the appended ones)
+                    // We must be careful to remove the exact students, in case other actions happened, but since this is a simple undo, we'll assume array integrity for now.
+                    for (let i = 0; i < students.length; i++) {
+                        const studentIndex = currentStudents.lastIndexOf(students[i]); // Find the last instance of the student ID
+                        if (studentIndex !== -1) {
+                            currentStudents.splice(studentIndex, 1); // Remove the student ID
+                        }
+                    }
+
+                    // F. Edge-Case Handling: If the booking is now empty after undo, remove it entirely.
+                    if (currentStudents.length === 0) {
+                        bookings.splice(currentBookingIndex, 1);
+                    }
+                    displayError(`Undo successful: Removed ${students.length} students from booking for ${podId} at ${time}.`);
+                } else if (lastAction === 'removed') {
+                    // Undo 'removed': Re-insert the booking into the array at the original index (C. Undo functionality)
+                    // Note: This relies on the original index, which is brittle if other removals happened, but fulfills the basic requirement.
+                    if (lastSuccessfulBooking.originalIndex >= 0 && lastSuccessfulBooking.originalIndex <= bookings.length) {
+                         bookings.splice(lastSuccessfulBooking.originalIndex, 0, { podId, time, students });
+                    } else {
+                        // If index is out of bounds, push it to the end instead of failing
+                        bookings.push({ podId, time, students });
+                    }
+                    displayError(`Undo successful: Re-inserted removed booking for ${podId} at ${time}.`);
+                } else {
+                    displayError('No valid undo operation available or the booking was modified externally.');
                     return;
                 }
 
-                const { action, podId, time, students } = lastSuccessfulBooking;
-
-                if (action === 'new') {
-                    // Scenario: Last action was creating a new booking object.
-                    // We need to find and remove this entire object.
-                    let indexToRemove = -1;
-                    for (let i = 0; i < bookings.length; i++) {
-                        const booking = bookings[i];
-                        // Find the exact booking object created by comparing podId, time, and the student list
-                        if (booking.podId === podId && booking.time === time && booking.students.length === students.length) {
-                            // Simple check: since student lists are arrays of strings, we check if they contain the same set of students added.
-                            // NOTE: A more robust check for large systems would compare array contents, but for this task, we rely on the object's identity through pod/time/length for simplification.
-                            indexToRemove = i;
-                            break;
-                        }
-                    }
-
-                    if (indexToRemove !== -1) {
-                        bookings.splice(indexToRemove, 1); // Remove the entire booking object
-                        clearError();
-                        displayError(`Undo successful: Removed new booking for ${podId} at ${time}.`);
-                    } else {
-                        // Edge Case: The last booking was manually removed or altered in the table (by 'Remove' button).
-                        displayError('Undo failed: The original last booking slot was not found (may have been manually removed).');
-                    }
-                    
-                } else if (action === 'append') {
-                    // Scenario: Last action was appending students to an existing booking.
-                    // We need to find the existing booking and remove the appended students.
-                    let existingBooking = findBooking(podId, time, bookings);
-
-                    if (existingBooking) {
-                        // Remove the added students (the `students` array in lastSuccessfulBooking) from the existing booking's student list
-                        for (let i = 0; i < students.length; i++) {
-                            const studentIdToRemove = students[i];
-                            // Find index of student in the existing booking's student array
-                            const studentIndex = existingBooking.students.indexOf(studentIdToRemove);
-                            if (studentIndex !== -1) {
-                                existingBooking.students.splice(studentIndex, 1);
-                            }
-                        }
-
-                        // Check if the booking is now empty and remove it if so
-                        if (existingBooking.students.length === 0) {
-                            removeBooking(podId, time); // Use the existing remove function to clean up empty slot
-                            clearError();
-                            displayError(`Undo successful: Removed students from ${podId} at ${time}. Slot is now empty.`);
-                        } else {
-                            clearError();
-                            displayError(`Undo successful: Removed ${students.length} students from booking for ${podId} at ${time}.`);
-                        }
-                    } else {
-                        // Edge Case: The original booking was manually removed or altered.
-                        displayError('Undo failed: The booking to which students were appended was not found.');
-                    }
-                }
-
-                // Crucial step: reset the undo state
-                lastSuccessfulBooking = null;
+                lastSuccessfulBooking = null; // Clear undo state after successful undo
                 renderBookingsTable();
                 updateInsights();
             }
 
-            // Attach the undo function to the button
-            undoButton.addEventListener('click', undoLastBooking);
+            // --- B. Bookings Table (8 marks) ---
 
+            function renderBookingsTable() {
+                // Clear existing table rows
+                bookingsTableBody.innerHTML = '';
 
-            // --- C. Operational Insights (4 marks) & E. Update Display ---
+                if (bookings.length === 0) {
+                    const noBookingsRow = document.createElement('tr');
+                    const cell = document.createElement('td');
+                    cell.setAttribute('colspan', '6'); // Span all columns
+                    cell.textContent = 'No bookings yet.';
+                    cell.style.textAlign = 'center';
+                    cell.style.fontStyle = 'italic';
+                    bookingsTableBody.appendChild(cell);
+                    return;
+                }
 
-            function updateInsights() {
-                const insights = recomputeInsights(bookings, pods);
+                // Sort bookings for consistent display (optional but good UX: by time, then podId)
+                // We'll implement a simple bubble sort equivalent for array sorting without advanced methods
+                const sortedBookings = [];
+                for (let i = 0; i < bookings.length; i++) {
+                    sortedBookings.push(bookings[i]);
+                }
 
-                // C.1 Total Bookings
-                totalBookingsEl.textContent = insights.totalBookingsMadeToday;
+                // Basic bubble sort for sorting by time then podId
+                for (let i = 0; i < sortedBookings.length - 1; i++) { // Outer Loop
+                    for (let j = 0; j < sortedBookings.length - 1 - i; j++) { // Inner Loop
+                        const bookingA = sortedBookings[j];
+                        const bookingB = sortedBookings[j + 1];
 
-                // C.2 Total Unique Students
-                totalUniqueStudentsEl.textContent = insights.totalUniqueStudentsServed;
+                        // Compare by time first
+                        if (bookingA.time > bookingB.time) {
+                            // Swap
+                            const temp = sortedBookings[j];
+                            sortedBookings[j] = sortedBookings[j + 1];
+                            sortedBookings[j + 1] = temp;
+                        } else if (bookingA.time === bookingB.time) {
+                            // If times are equal, compare by podId
+                            if (bookingA.podId > bookingB.podId) {
+                                // Swap
+                                const temp = sortedBookings[j];
+                                sortedBookings[j] = sortedBookings[j + 1];
+                                sortedBookings[j + 1] = temp;
+                            }
+                        }
+                    }
+                }
 
-                // C.3 Busiest Hour
-                busiestHourEl.textContent = insights.busiestHour;
+                for (let i = 0; i < sortedBookings.length; i++) { // Loop for DOM generation
+                    const booking = sortedBookings[i];
+                    // Find the original index of this sorted booking in the *unsorted* global 'bookings' array 
+                    // This index is what we need for the remove button's data-index attribute, 
+                    // so that when the button is clicked, we delete the correct, original item.
+                    let originalIndex = -1;
+                    for (let k = 0; k < bookings.length; k++) {
+                        // We use a combination of unique properties (podId, time, and student count/IDs) 
+                        // to reliably find the matching object in the unsorted array for removal.
+                        if (bookings[k].podId === booking.podId && 
+                            bookings[k].time === booking.time &&
+                            bookings[k].students.length === booking.students.length) {
+                                originalIndex = k;
+                                break;
+                        }
+                    }
 
-                // C.4 Fill-rate per pod
-                fillRateListEl.innerHTML = ''; // Clear previous list
-                for (let i = 0; i < pods.length; i++) {
-                    const podId = pods[i].id;
-                    const fillRate = insights.fillRatePerPod[podId] !== undefined ? insights.fillRatePerPod[podId] : '0.0';
-                    const listItem = document.createElement('li');
-                    listItem.textContent = `${podId}: ${fillRate}%`;
-                    fillRateListEl.appendChild(listItem);
-                }
+                    const row = document.createElement('tr');
 
-                // C.5 Flagged duplicate attempts
-                flaggedDuplicatesEl.textContent = insights.flaggedDuplicatesAttempted;
-            }
+                    // # (index)
+                    const indexCell = document.createElement('td');
+                    indexCell.textContent = i + 1; // 1-based index
+                    row.appendChild(indexCell);
 
+                    // Pod
+                    const podCell = document.createElement('td');
+                    podCell.textContent = booking.podId;
+                    row.appendChild(podCell);
 
-            // Initialization on load
-            populatePodSelect();
-            renderBookingsTable();
-            updateInsights();
+                    // Time
+                    const timeCell = document.createElement('td');
+                    timeCell.textContent = booking.time;
+                    row.appendChild(timeCell);
 
-        });
-    </script>
+                    // # Students
+                    const countCell = document.createElement('td');
+                    countCell.textContent = booking.students.length;
+                    row.appendChild(countCell);
+
+                    // Student IDs
+                    const studentsCell = document.createElement('td');
+                    studentsCell.textContent = booking.students.join(', ');
+                    row.appendChild(studentsCell);
+
+                    // Actions (Remove Button)
+                    const actionsCell = document.createElement('td');
+                    const removeButton = document.createElement('button');
+                    removeButton.textContent = 'Remove';
+                    removeButton.classList.add('remove-btn');
+                    // Store the index of the booking in the *global* (unsorted) array to ensure correct deletion
+                    removeButton.setAttribute('data-index', originalIndex); 
+                    actionsCell.appendChild(removeButton);
+                    row.appendChild(actionsCell);
+
+                    bookingsTableBody.appendChild(row);
+                }
+            }
+            
+            // --- FINAL INITIALIZATION CALLS (Fix Applied Here) ---
+            
+            // 1. FIX: Call this function to fill the dropdown with pods.
+            populatePodSelect();
+            // 2. Render the initial hardcoded bookings.
+            renderBookingsTable();
+            // 3. Calculate and display the initial insights.
+            updateInsights(); 
+
+        });
+    </script>
 </body>
 </html>
